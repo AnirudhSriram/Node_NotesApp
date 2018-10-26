@@ -1,5 +1,5 @@
 # Node_NotesApp
-A simple notes application built on node woth ability to Add , Delete , List and Read notes.
+A simple notes application built on node woth ability to Add , Delete , List and Read personal notes.
 
 
 ## Getting Started
