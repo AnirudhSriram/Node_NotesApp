@@ -1,14 +1,42 @@
-console.log("Starting app");
-
+console.log("Starting app.js");
 //node modules
 const yargs = require('yargs');
-//custom own modules
 const _ = require('lodash');
 
+//custom own modules
+
 const notes = require('./notes.js');
-const argv = yargs.argv;
-command = argv._[0];
-console.log(command);
+let optionsList = {
+    title: {
+
+        describe: 'Title of the note',
+        demand: true,
+        alias: 't'
+    },
+    body:{
+        describe: 'Contents of the note',
+        demand: true,
+        alias: 'b'
+    }
+
+}
+const argv = yargs
+    .command('add', 'Adds a new note', {
+        title: optionsList.title, 
+        body: optionsList.body
+    })
+    .command('list', 'Lists all the notes present')
+    .command('read', 'Read the note with the provided title and displays to user', {
+        title: optionsList.title
+    })
+    .command('remove','Removes the note with the given title' ,  {
+        title : optionsList.title
+    })
+    .help()
+    .argv;
+
+let command = argv._[0];
+
 let bracer = () => {
     console.log("-----------------------------------");
 }
